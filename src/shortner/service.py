@@ -7,14 +7,27 @@ from random import randint, choice
 from string import ascii_lowercase
 from typing import Dict
 
+def test_shorten():
+    service = ShortnerService()
+    # mock data
+    result = service.make_short()
+    # check result
+    # check mocks
+    
+
+# Теперь нужно сделать из этого апишку
 @dataclass
 class ShortnerService:
     load_dotenv()
 
     redis_service = RedisService()
 
+    # make_short -> shorten
+    # Замокать данные (домен, путь??) 
+        # Нужно сделать MockStorageService  
+    # Проверить поведение (ссылка сохранена)
     def make_short(self) -> str:
-        domain = getenv('DOMAIN')
+        domain = getenv('DOMAIN') # прокинуть мок в тестах
         input_link = self._prompt_user_input_('Place your full link: ')
 
         new_path = self._make_random_path_(str(input_link))
@@ -28,6 +41,7 @@ class ShortnerService:
         print(short_link)
         return short_link
 
+    # get_full_link -> full_link
     def get_full_link(self) -> str:
         input_short_link = self._prompt_user_input_('Place your short link: ')
 
@@ -42,6 +56,7 @@ class ShortnerService:
         )
         return saved_object
 
+    # метод небольшой, используется в одном месте, нет смысла выносить.
     def _get_link_(self, short_link: str) -> Dict:
         saved_object = self.redis_service.get_value_for_key(
             key=short_link
