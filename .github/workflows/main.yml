@@ -20,9 +20,11 @@ jobs:
 
       - name: Run tests
         run: |
+          pipenv shell
           pytest
 
       - name: Lint with Ruff
         run: |
+          pipenv shell
           ruff --format=github .
         continue-on-error: true
