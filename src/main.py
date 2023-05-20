@@ -1,11 +1,11 @@
-from src.shortner.service import ShortnerService
+from fastapi import FastAPI
+
+from src.shortner.router import shortner_router
 
 
-def main():
-    service = ShortnerService()
-    service.make_short()
-    service.get_full_link()
+app = FastAPI(
+    title='Link Shortner',
+    version='0.0.1'
+)
 
-
-if __name__ == '__main__':
-    main()
+app.include_router(shortner_router)

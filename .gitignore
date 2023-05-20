@@ -130,3 +130,8 @@ dmypy.json
 
 # Inner IDEA files
 .idea
+
+# ===============
+# Project related
+src/.ruff_cache/
+src/tests/.pytest_cache
