@@ -14,7 +14,7 @@ class RedisService(StorageServiceInterface):
 
         self.redis_service = redis.Redis(
             host=_host,
-            port=int(_port),
+            port=_port,
             db=0
         )
 
